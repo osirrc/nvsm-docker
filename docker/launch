@@ -1,1 +1,0 @@
-python -u nvsm.py --data_folder $1 --splits_test $2 --splits_val $3 --stopwords $4 --qrels_file $5 --queries_file $6 --output_folder $7
