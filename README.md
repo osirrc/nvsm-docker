@@ -1,23 +1,17 @@
 # nvsm-docker
 Docker for Neural Vector Space Model Tensorflow implementation (https://arxiv.org/abs/1708.02702?context=cs).
 
-To perform indexing run:
-python run_nvsm.py prepare --repo albep/nvsm --collections robust04 --opts coll_folder=<collection_folder>+output_folder=<output_folder>+stopwords=<stopwords.txt>
+In order to run, download the jig from: https://github.com/osirrc2019/jig.
 
-To perform training run:
-python run_nvsm.py train --repo albep/nvsm --opts test_split=<test_split.txt>+val_split=<validation.txt>+qrels=<qrels_file.qrels>+topics=<topics_file>+output_folder_host=<output_folder>
+To perform indexing, run:
+prepare --repo albep/nvsm --collections robust04=<robust04_collection_folder>=trectext
 
-To perform search run:
-python run_nvsm.py search --repo albep/nvsm --opts test_split=<test_split.txt>+qrels=<qrels_file.qrel>+topics=<topics_file>+output_folder_host=<output_folder>
+To perform training, run:
+train --model_folder <path_to_folder_to_save_trained_model> --repo albep/nvsm --topic <path_to_robust04_topics> --test_split <splits/test.txt> --validation_split <splits/validation.txt> --qrels <robust04.qrel>
 
-  <collection_folder>: root of collection folder in trec format (i.e. robust04)
-  <test_split.txt>: a txt file with the ids of the queries (one per line), to be used as a test subset during the evaluation step;
-  <validation.txt>: a txt file with the ids of the queries (one per line), to be used as a validation subset during the training step;
-  <stopwords.txt>: a txt file with one word per line, containing the stoplist to use during indexing;
-  <qrels_file.qrel>: a qrels file in TREC format, used during training;
-  <topics_file>: a topics file in TREC format, used during training;
-  <output_folder>: folder path used by docker to store auxiliary data (i.e. collection index) and output runs.
-  
-  
-  
+To perform search, run:
+search --repo albep/nvsm --collection robust04 --topic <path_to_robust04_topics> --test_split <splits/test.txt> --output <path_to_ranking_output_folder> --qrels <robust04.qrel> --opts qrels=<robust04.qrel>
 
+
+<splits/test.txt> and <splits/validation.txt>: the files provided in the sample_data folder of the repository.
+<path_to_robust04_topics>: robust04 topics are provided in the jig repository: https://github.com/osirrc2019/jig.
