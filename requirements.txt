@@ -1,7 +1,0 @@
-nltk==3.3
-numpy
-tqdm
-whoosh
-tensorflow
-textwrap3
-sklearn
