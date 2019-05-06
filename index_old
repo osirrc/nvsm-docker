@@ -1,0 +1,1 @@
+python -u indexing.py --data_folder /input/collections/ --output_folder /output --stopwords /indri_stopwords.txt

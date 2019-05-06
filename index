@@ -1,0 +1,9 @@
+#!/usr/local/bin/python
+import argparse
+import json
+import os
+import subprocess
+import sys
+
+os.system('python ./indexing.py --data_folder /input/collections/ --output_folder /data --stopwords /indri_stopwords.txt')
+# os.system('python ./indexing.py --data_folder  /Users/albertopurpura/PycharmProjects/OSIRRC/data/corpus_test/robust04/robust04 --output_folder ./data --stopwords ./indri_stopwords.txt')
