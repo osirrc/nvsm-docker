@@ -1,1 +1,0 @@
-python -u nvsm_train.py --queries_file $1 --splits_test $2 --splits_val $3 --qrels_file $4 --output_folder $5
