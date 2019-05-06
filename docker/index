@@ -1,1 +1,0 @@
-python -u indexing.py --data_folder $1 --output_folder $2 --stopwords $3
