@@ -1,1 +1,0 @@
-python -u nvsm_test.py --queries_file $1 --qrels_file $2 --splits_test $3 --output_folder $4
