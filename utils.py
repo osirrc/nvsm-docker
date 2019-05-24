@@ -413,6 +413,8 @@ class Utils(object):
         print('qrels file: ' + qrels_file_path)
         if not os.path.isfile(qrels_file_path):
             print('QRELS file NOT FOUND!')
+        if not os.path.isfile(ranking_path):
+            print('RANKING file NOT FOUND!')
         print('evaluate model ranking')
         MAP = self.get_averaged_measure_score(ranking_path, qrels_file_path, 'map')
         NDCG = self.get_averaged_measure_score(ranking_path, qrels_file_path, 'ndcg_cut_100')
