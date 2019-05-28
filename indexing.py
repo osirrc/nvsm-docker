@@ -1,3 +1,10 @@
+"""
+    Author: <mailto:purpuraa@dei.unipd.it Alberto Purpura, stefano.marchesin@dei.unipd.it Stefano Marchesin>
+    Copyright: (C) 2019-2020 <http://www.dei.unipd.it/ 
+    Department of Information Engineering> (DEI), <http://www.unipd.it/ University of Padua>, Italy
+    License: <http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0>
+"""
+
 import glob
 import os
 import argparse
