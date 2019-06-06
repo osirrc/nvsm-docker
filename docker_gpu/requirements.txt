@@ -1,0 +1,7 @@
+nltk==3.3
+numpy
+tqdm
+whoosh
+tensorflow-gpu
+textwrap3
+sklearn
