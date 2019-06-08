@@ -39,5 +39,5 @@ python run.py search \
   --output path/to/folder/of/saved/model \
   --qrels qrels/qrels.robust04.txt \
   --topic topics/topics.robust04.txt \
-  --collection robust04 \
+  --collection robust04
 ```
