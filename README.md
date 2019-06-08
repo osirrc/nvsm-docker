@@ -21,7 +21,7 @@ The following `jig` command can be used to train the retrieval model on the `rob
 ```
 python run.py train \
   --repo albep/nvsm \
-  --model_folder path/to/directory/to/save/model \
+  --model_folder path/model/directory \
   --topic topics/topics.robust04.txt \
   --test_split sample_training_validation_query_ids/robust04_test.txt \
   --validation_split sample_training_validation_query_ids/robust04_validation.txt \
@@ -36,9 +36,14 @@ The following `jig` command can be used to perform a retrieval run on the collec
 ```
 python run.py search \
   --repo albep/nvsm \
-  --output path/to/saved/model/directory \
+  --output path/model/directory \
   --qrels qrels/qrels.robust04.txt \
   --topic topics/topics.robust04.txt \
   --test_split sample_training_validation_query_ids/robust04_test.txt \
   --collection robust04
 ```
+
+## Notes
+The paths `path/to/model/directory`, passed to the `train` script, and `path/model/directory`, passed to the `search` one, need to point to the same directory.
+
+nvsm_gpu requires nvidia-docker (https://github.com/NVIDIA/nvidia-docker) installed on the host machine.
