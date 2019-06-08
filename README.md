@@ -1,22 +1,43 @@
-# nvsm-docker
-Docker for Neural Vector Space Model Tensorflow implementation (https://arxiv.org/abs/1708.02702?context=cs).
+# NVSM OSIRRC Docker Image
+[**Alberto Purpura**](https://github.com/albpurpura), [**Stefano Marchesin**](https://github.com/stefano-marchesin), [**Gianmaria Silvello**](https://github.com/giansilv) and [**Nicola Ferro**](https://github.com/frrncl)
 
-In order to run, download the jig from: https://github.com/osirrc2019/jig.
+This is the docker image of our implementation of Neural Vector Space Model [NVSM](https://arxiv.org/abs/1708.02702?context=cs) conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
+This image is available on [Docker Hub](https://cloud.docker.com/u/albep/repository/docker/albep/nvsm) has been tested with the jig at commit [ca31987](https://github.com/osirrc/jig/commit/ca3198704795f2b6de8b78ed7a66bbdf1dccadb1) (6/5/2019).
 
-To perform indexing, run:
++ Supported test collections: `robust04`
++ Supported hooks: `init`, `index`,  `train`,  `search`
 
-python run.py prepare --repo albep/nvsm --collections robust04=<robust04_collection_folder>=trectext
+## Quick Start
 
-To perform training, run:
+The following `jig` command can be used to index TREC disks 4/5 for `robust04`:
 
-python run.py train --model_folder <path_to_folder_to_save_trained_model> --repo albep/nvsm --topic <path_to_robust04_topics> --test_split <splits/test.txt> --validation_split <splits/validation.txt> --qrels <robust04.qrel> --opts epochs=12 --collection Robust04
+```
+python run.py prepare \
+  --repo albep/nvsm \
+  --collections robust04=/path/to/disk45=trectext
+```
 
-To perform search, run:
+The following `jig` command can be used to train the retrieval model on the `robust04` collection:
+```
+python run.py train \
+  --repo albep/nvsm \
+  --model_folder path/to/folder/to/save/model \
+  --topic topics/topics.robust04.txt \
+  --test_split sample_training_validation_query_ids/robust04_test.txt \
+  --validation_split sample_training_validation_query_ids/robust04_validation.txt \
+  --qrels qrels/qrels.robust04.txt 
+  --opts epochs=12 \
+  --collection Robust04
+```
 
-python run.py search --repo albep/nvsm --collection robust04 --topic <path_to_robust04_topics> --test_split <splits/test.txt> --output <path_to_ranking_output_folder> --qrels <robust04.qrel>
 
-<splits/test.txt> and <splits/validation.txt>: the files provided in the sample_data folder of the repository.
-<path_to_robust04_topics>: robust04 topics are provided in the jig repository: https://github.com/osirrc2019/jig.
+The following `jig` command can be used to perform a retrieval run on the collection with the `robust04` test collection.
 
-
-Nvsm_gpu requires nvidia-docker installed on the host machine, see https://github.com/NVIDIA/nvidia-docker for more details.
+```
+python run.py search \
+  --repo albep/nvsm \
+  --output path/to/folder/of/saved/model \
+  --qrels qrels/qrels.robust04.txt \
+  --topic topics/topics.robust04.txt \
+  --collection robust04 \
+```
