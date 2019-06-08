@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM tensorflow/tensorflow:latest-gpu-py3
+FROM python:3.5-slim
 
 # Set the working directory to /app
 WORKDIR /
@@ -11,6 +11,8 @@ COPY . /
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends gcc
 RUN apt-get install -y g++
+RUN apt-get install unzip
+RUN unzip /trec_eval.zip
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 RUN apt-get update && apt-get install make
 RUN cd /trec_eval; make
