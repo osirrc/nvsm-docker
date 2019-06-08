@@ -21,7 +21,7 @@ The following `jig` command can be used to train the retrieval model on the `rob
 ```
 python run.py train \
   --repo albep/nvsm \
-  --model_folder path/to/folder/to/save/model \
+  --model_folder path/to/directory/to/save/model \
   --topic topics/topics.robust04.txt \
   --test_split sample_training_validation_query_ids/robust04_test.txt \
   --validation_split sample_training_validation_query_ids/robust04_validation.txt \
@@ -36,7 +36,7 @@ The following `jig` command can be used to perform a retrieval run on the collec
 ```
 python run.py search \
   --repo albep/nvsm \
-  --output path/to/folder/of/saved/model \
+  --output path/to/saved/model/directory \
   --qrels qrels/qrels.robust04.txt \
   --topic topics/topics.robust04.txt \
   --test_split sample_training_validation_query_ids/robust04_test.txt \
