@@ -43,6 +43,16 @@ python run.py search \
   --collection robust04
 ```
 
+## Expected Results
+
+### robust04
+
+MAP                                     | NVSM CPU      | NVSM GPU |
+:---------------------------------------|-----------|-----------|
+[Robust04 test split topics](https://github.com/osirrc/jig/blob/master/sample_training_validation_query_ids/robust04_test.txt)| 0.2531    | 0.138    | 0.138*    |
+
+* Results with the NVSM GPU image may slightly vary. In fact, TensorFlow uses the Eigen library, which uses Cuda atomics to implement reduction operations, such as tf.reduce_sum etc. Those operations are non-deterministical and each operation can introduce small variations. See [this](https://github.com/tensorflow/tensorflow/issues/3103) Tensorflow issue for more details.
+
 ## Notes
 The paths `path/to/model/directory`, passed to the `train` script, and `path/model/directory`, passed to the `search` one, need to point to the same directory.
 
