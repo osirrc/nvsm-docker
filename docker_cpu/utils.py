@@ -10,6 +10,7 @@ import math
 import string
 import subprocess
 import itertools
+import pickle
 import numpy as np
 import xml.etree.ElementTree as ET
 
@@ -184,8 +185,31 @@ class Utils(object):
         num_batches = math.ceil(sum([max(doc_length - ngram_size + 1, 0) for doc_length in docs_length]) / batch_size)
         return num_batches
 
+    def store_doc_labels(self, index, out_dir):
+        """store document labels dictionary"""
+        reader = index.reader()
+        doc_ids = list(reader.all_doc_ids())
+        # define doc labels list
+        doc_labels = list()
+        for doc_id in doc_ids:
+            label = reader.stored_fields(doc_id)['docno']
+            doc_labels.append(label)
+        # convert doc labels list into dicts
+        ix2label = {ix: docid for ix, docid in enumerate(doc_labels)}
+        # store doc labels dict
+        with open(out_dir + '/ix2label.pkl', 'wb') as out:
+            pickle.dump(ix2label, out)
+        return ix2label
+
+    def get_doc_labels(self, data_path):
+        """read dict of doc lables (e.g. TREC <DOCNO> values)"""
+        with open(data_path + '/ix2label.pkl', 'rb') as dfile:
+            ix2label = pickle.load(dfile)
+        return ix2label
+
+    """
     def get_doc_labels(self, index):
-        """return list of document labels (e.g. TREC <DOCNO> values)"""
+        # return list of document labels (e.g. TREC <DOCNO> values)
         reader = index.reader()
         doc_ids = list(reader.all_doc_ids())
         # define doc labels list
@@ -194,6 +218,7 @@ class Utils(object):
             label = reader.stored_fields(doc_id)['docno']
             doc_labels.append(label)
         return doc_labels
+    """
 
     def corpus2idx(self, index, oov=False):
         """convert documents into list of indices"""
@@ -376,7 +401,7 @@ class Utils(object):
 
     def perform_search(self, doc_labels, docs, query_ids, queries, ranking_path):
         """perform search over docs given queries"""
-        doc_labels = np.array(doc_labels)
+        #doc_labels = np.array(doc_labels)
         # compute similarities
         print('compute similarities between docs and queries')
         similarities = cosine_similarity(docs, queries)
@@ -387,7 +412,8 @@ class Utils(object):
         # write results in ranking file
         for i in tqdm(range(similarities.shape[1])):
             rank = np.argsort(-similarities[:, i])[:1000]
-            docs_rank = doc_labels[rank]
+            #docs_rank = doc_labels[rank]
+            docs_rank = [doc_labels[r] for r in rank]
             qid = query_ids[i]
             # verify whether qid is an integer
             if qid.isdigit():  # cast to integer - this operation avoids storing topic ids as '059' instead of '59'
