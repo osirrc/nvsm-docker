@@ -88,27 +88,16 @@ def main(_):
     if not os.path.exists(qrels_folder_name):
         print('qrels does not exists - please run nvsm_train.py first.')
         return False
-    # check if index exists
-    if not os.path.exists(index_folder_name):
-        print('index path does not exists - please run indexing.py first.')
-        return False
-    elif not index.exists_in(index_folder_name):
-        print('index does not exists - please run indexing.py first.')
-        return False
-    else:
-        # load index
-        print('loading index')
-        ix = index.open_dir(index_folder_name)
     # load utils functions - set seed value
     utils = Utils(opts.seed)
     # load processed data
-    if not os.path.exists(processed_folder_name + '/term_dictionary'):  # term dictionary needs to be created
+    if not os.path.exists(os.path.join(models_folder_name, opts.model_name) + '/term_dictionary'):  # term dictionary needs to be created
         print('term dictionary does not exist - please run indexing.py first.')
         return False
     else:  # term dictionary exists
         print('term dictionary exists: load term dictionary')
         # load term dictionary
-        with open(processed_folder_name + '/term_dictionary', 'rb') as td:
+        with open(os.path.join(models_folder_name, opts.model_name) + '/term_dictionary', 'rb') as td:
             utils.term_dict = pickle.load(td)
     # print term dictionary size
     print('term dictionary size: {}'.format(len(utils.term_dict)))
@@ -142,7 +131,7 @@ def main(_):
                 out_test.write(qrel)
     """
     # get doc labels
-    doc_labels = utils.get_doc_labels(ix)
+    doc_labels = utils.get_doc_labels(os.path.join(models_folder_name, opts.model_name))
     # load best epoch
     with open(os.path.join(models_folder_name, opts.model_name) + '/best_epoch.txt', 'r') as bef:
         best_epoch = bef.read()

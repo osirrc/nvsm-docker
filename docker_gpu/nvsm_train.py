@@ -202,8 +202,11 @@ def main(_):
                 out_test.write(qrel)
     # get list of allowed document indexes
     allowed_docs = utils.get_allowed_docs(corpus, opts.ngram_size)
-    # get doc labels
-    doc_labels = utils.get_doc_labels(ix)
+    # store doc labels and return them for use
+    doc_labels = utils.store_doc_labels(ix, os.path.join(models_folder_name, opts.model_name))
+    # store dictionary
+    with open(os.path.join(models_folder_name, opts.model_name) + '/term_dictionary', 'wb') as td:
+        pickle.dump(utils.term_dict, td)
     # start session
     with tf.Graph().as_default(), tf.Session() as sess:
         # declare model parameters
