@@ -1,5 +1,6 @@
 # OSIRRC Docker Image for NVSM
 [![Generic badge](https://img.shields.io/badge/DockerHub-go%21-yellow.svg)](https://hub.docker.com/r/osirrc2019/nvsm)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3246362.svg)](https://doi.org/10.5281/zenodo.3246362)
 
 [**Nicola Ferro**](https://github.com/frrncl), [**Stefano Marchesin**](https://github.com/stefano-marchesin), [**Alberto Purpura**](https://github.com/albpurpura) and [**Gianmaria Silvello**](https://github.com/giansilv)
 
