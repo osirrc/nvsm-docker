@@ -27,7 +27,7 @@ python run.py train \
   --topic topics/topics.robust04.txt \
   --test_split sample_training_validation_query_ids/robust04_test.txt \
   --validation_split sample_training_validation_query_ids/robust04_validation.txt \
-  --qrels qrels/qrels.robust04.txt 
+  --qrels qrels/qrels.robust04.txt \
   --opts epochs=12 \
   --collection Robust04
 ```
