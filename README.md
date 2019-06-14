@@ -1,6 +1,3 @@
-[![Generic badge](https://img.shields.io/badge/GitHub-go%21-green.svg)](https://github.com/osirrc/nvsm-docker)
-[![Generic badge](https://img.shields.io/badge/DockerHub-go%21-yellow.svg)](https://hub.docker.com/r/osirrc2019/nvsm)
-
 # NVSM OSIRRC Docker Image
 [**Nicola Ferro**](https://github.com/frrncl), [**Stefano Marchesin**](https://github.com/stefano-marchesin), [**Alberto Purpura**](https://github.com/albpurpura) and [**Gianmaria Silvello**](https://github.com/giansilv)
 
