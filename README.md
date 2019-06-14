@@ -1,7 +1,9 @@
-# NVSM OSIRRC Docker Image
+# OSIRRC Docker Image for NVSM
+[![Generic badge](https://img.shields.io/badge/DockerHub-go%21-yellow.svg)](https://hub.docker.com/r/osirrc2019/nvsm)
+
 [**Nicola Ferro**](https://github.com/frrncl), [**Stefano Marchesin**](https://github.com/stefano-marchesin), [**Alberto Purpura**](https://github.com/albpurpura) and [**Gianmaria Silvello**](https://github.com/giansilv)
 
-This is the docker image of our implementation of Neural Vector Space Model [NVSM](https://arxiv.org/abs/1708.02702?context=cs) conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
+This is the docker image of our implementation of [Neural Vector Space Model (NVSM)](https://arxiv.org/abs/1708.02702?context=cs) conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
 This image is available on [Docker Hub](https://cloud.docker.com/u/albep/repository/docker/albep/nvsm) has been tested with the jig at commit [ca31987](https://github.com/osirrc/jig/commit/ca3198704795f2b6de8b78ed7a66bbdf1dccadb1) (6/5/2019).
 
 + Supported test collections: `robust04`
