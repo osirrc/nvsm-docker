@@ -2,7 +2,7 @@ language: minimal
 services:
 - docker
 script:
-- docker build -t "$REPO":${TRAVIS_TAG:-latest} .
+- docker build -t "$REPO":${TRAVIS_TAG:-latest} docker_cpu
 after_success:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 - if [[ ( "$TRAVIS_BRANCH" == "master" ) || ( -n "$TRAVIS_TAG" ) ]]; then docker push
